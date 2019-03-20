@@ -7,8 +7,8 @@ Install:
 
 ## Getting started
 To start the service you need to:
-- import in mysql the startup database defined in the bankingservice\sqlscript\bankingservice.sql
-- configure the username and password of your mysql user in bankingservice\src\main\resources\application.properties
+- import in mysql the startup database defined in the https://github.com/UTCN-SD-PS/banking-service/blob/master/sqlscript/bankingservice.sql
+- configure the username and password of your mysql user in https://github.com/UTCN-SD-PS/banking-service/blob/master/src/main/resources/application.properties
 
 ## Starting the service
 Go to bankingservice folder and execute the following command: 
@@ -25,5 +25,5 @@ admin apis:
 - http://localhost:8080/swagger-ui.html#/Employee
 
 ## Calling the service apis:
-- each api call is protected with credentials that are configured in bankingservice\src\main\resources\application.properties
+- each api call is protected with credentials that are configured in https://github.com/UTCN-SD-PS/banking-service/blob/master/src/main/resources/application.properties
 
