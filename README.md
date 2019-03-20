@@ -6,26 +6,24 @@ Install:
 - mysql 
 
 ## Getting started
-
 To start the service you need to:
 - import in mysql the startup database defined in the bankingservice\sqlscript\bankingservice.sql
 - configure the username and password of your mysql user in bankingservice\src\main\resources\application.properties
 
-### Starting the service
-
-go to bankingservice folder and execute the following command: 
+## Starting the service
+Go to bankingservice folder and execute the following command: 
 gradlew.bat bootRun
 
-#### Accessing the service swagger:
-http://localhost:8080/swagger-ui.html
+## Accessing the service swagger:
+- http://localhost:8080/swagger-ui.html
 
 employee apis: 
 - http://localhost:8080/swagger-ui.html#/Account
 - http://localhost:8080/swagger-ui.html#/Client
 
 admin apis:
-http://localhost:8080/swagger-ui.html#/Employee
+- http://localhost:8080/swagger-ui.html#/Employee
 
-##### Calling the service apis:
+## Calling the service apis:
 - each api call is protected with credentials that are configured in bankingservice\src\main\resources\application.properties
 
