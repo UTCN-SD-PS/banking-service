@@ -64,8 +64,8 @@ class AccountController {
     @PutMapping(value = "/{accountId}")
     public ResponseEntity<?> updateAccount(@PathVariable("accountId") Integer accountId, @RequestBody AccountDTO accountDto) {
         try {
-            accountService.updateAccount(accountId, accountDto);
-            return new ResponseEntity<>(accountDto, HttpStatus.OK);
+            AccountDTO updatedAccount = accountService.updateAccount(accountId, accountDto);
+            return new ResponseEntity<>(updatedAccount, HttpStatus.OK);
         } catch (NotFoundException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         } catch (Exception ex) {

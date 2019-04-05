@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import utcn.labs.sd.bankingservice.core.configuration.SwaggerTags;
-import utcn.labs.sd.bankingservice.domain.data.entity.Account;
 import utcn.labs.sd.bankingservice.domain.dto.AccountDTO;
 import utcn.labs.sd.bankingservice.domain.dto.ClientDTO;
 import utcn.labs.sd.bankingservice.domain.service.ClientService;
@@ -79,10 +78,6 @@ class ClientController {
     @DeleteMapping(value = "/{clientId}")
     public ResponseEntity<?> deleteClient(@PathVariable("clientId") String clientId) {
         try {
-            ClientDTO clientDto = clientService.getClientById(clientId);
-            for (Account account : clientDto.getAccountList()) {
-                clientDto.getAccountList().remove(account);
-            }
             clientService.deleteClient(clientId);
             return new ResponseEntity<String>(HttpStatus.OK);
         } catch (NotFoundException ne) {
@@ -96,15 +91,14 @@ class ClientController {
     @PostMapping(value = "/account/{clientId}")
     public ResponseEntity<?> addAccountToClient(@PathVariable("clientId") String clientId, @RequestBody AccountDTO accountDto) {
         try {
-            clientService.addAccountToClient(clientId, accountDto);
-            ClientDTO clientDto = clientService.getClientById(clientId);
+            ClientDTO clientDto = clientService.addAccountToClient(clientId, accountDto);
             return new ResponseEntity<>(clientDto, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 
-    @ApiOperation(value = "getAllClients", tags = SwaggerTags.CLIENT_TAG)
+    @ApiOperation(value = "deleteAccountFromClient", tags = SwaggerTags.CLIENT_TAG)
     @DeleteMapping(value = "/account/{clientId}/{accountId}")
     public ResponseEntity<?> deleteAccountFromClient(@PathVariable("clientId") String clientId, @PathVariable("accountId") int accountId) {
         try {

@@ -11,13 +11,13 @@ public class AccountDTO {
     private final int accountId;
     private final AccountType accountType;
     private final String creationDate;
-    private final float balance;
+    private final Float balance;
 
     @JsonCreator
     public AccountDTO(@JsonProperty("accountId") int accountId,
                       @JsonProperty("accountType") AccountType accountType,
                       @JsonProperty("creationDate") String creationDate,
-                      @JsonProperty("balance") float balance) {
+                      @JsonProperty("balance") Float balance) {
         this.accountId = accountId;
         this.accountType = accountType;
         this.creationDate = creationDate;
@@ -40,7 +40,7 @@ public class AccountDTO {
     }
 
     @JsonProperty("balance")
-    public float getBalance() {
+    public Float getBalance() {
         return balance;
     }
 

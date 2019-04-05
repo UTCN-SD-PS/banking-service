@@ -45,7 +45,13 @@ public class AccountService {
         if (account == null) {
             throw new NotFoundException("No account found with that id");
         }
-        account.setBalance(accountDto.getBalance());
+
+        if (accountDto.getBalance() != null) {
+            account.setBalance(accountDto.getBalance());
+        }
+        if (accountDto.getAccountType() != null) {
+            account.setAccountType(accountDto.getAccountType());
+        }
         return AccountConverter.toDto(accountRepository.save(account));
     }
 

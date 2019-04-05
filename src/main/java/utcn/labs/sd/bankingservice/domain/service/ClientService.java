@@ -37,9 +37,9 @@ public class ClientService {
 
     public ClientDTO createClient(ClientDTO clientDto) throws Exception {
         Client client = new Client(clientDto.getSsn(), clientDto.getFirstname(), clientDto.getLastname(), clientDto.getIdentityCardNumber(),
-                clientDto.getAddress(), clientDto.getEmail(), clientDto.getAccountList());
+                clientDto.getAddress(), clientDto.getEmail(), null);
         Client possibleAlreadyExistingClient = clientRepository.findById(clientDto.getSsn()).orElse(null);
-        if (possibleAlreadyExistingClient == null) {
+        if ( possibleAlreadyExistingClient == null) {
             Client newClient = clientRepository.save(client);
             return ClientConverter.toDto(newClient);
         } else {
@@ -52,11 +52,24 @@ public class ClientService {
         if (client == null) {
             throw new NotFoundException("No client found with that clientId");
         }
-        client.setFirstname(clientDto.getFirstname());
-        client.setLastname(clientDto.getLastname());
-        client.setIdentityCardNumber(clientId);
-        client.setAddress(clientDto.getAddress());
-        client.setEmail(clientDto.getEmail());
+        if (clientDto.getFirstname() != null) {
+            client.setFirstname(clientDto.getFirstname());
+        }
+
+        if (clientDto.getLastname() != null) {
+            client.setLastname(clientDto.getLastname());
+        }
+
+        if (clientDto.getIdentityCardNumber() != null) {
+            client.setIdentityCardNumber(clientDto.getIdentityCardNumber());
+        }
+
+        if (clientDto.getAddress() != null) {
+            client.setAddress(clientDto.getAddress());
+        }
+        if (clientDto.getEmail() != null) {
+            client.setEmail(clientDto.getEmail());
+        }
         return ClientConverter.toDto(clientRepository.save(client));
     }
 
@@ -82,8 +95,8 @@ public class ClientService {
     }
 
     public ClientDTO deleteAccountFromClient(String clientId, Integer accountId) {
-        Client client = clientRepository.findById(clientId).orElse(null);
         accountRepository.deleteById(accountId);
+        Client client = clientRepository.findById(clientId).orElse(null);
         return ClientConverter.toDto(client);
     }
 }

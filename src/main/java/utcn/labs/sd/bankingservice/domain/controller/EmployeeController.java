@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import utcn.labs.sd.bankingservice.core.configuration.SwaggerTags;
-import utcn.labs.sd.bankingservice.domain.dto.AccountDTO;
+import utcn.labs.sd.bankingservice.domain.dto.EmployeeDTO;
 
 import java.util.Collections;
 import java.util.List;
@@ -21,7 +21,7 @@ class EmployeeController {
 
     @ApiOperation(value = "getAllEmployees", tags = SwaggerTags.EMPLOYEE_TAG)
     @GetMapping
-    public List<AccountDTO> getAllAccounts() {
+    public List<EmployeeDTO> getAllAccounts() {
         return Collections.emptyList();
     }
 

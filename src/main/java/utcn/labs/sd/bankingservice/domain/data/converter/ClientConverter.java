@@ -11,19 +11,19 @@ public class ClientConverter {
     private ClientConverter() {
     }
 
-    public static ClientDTO toDto(Client model) {
+    public static ClientDTO toDto(Client entity) {
         ClientDTO dto = null;
-        if (model != null) {
-            dto = new ClientDTO(model.getSsn(), model.getFirstname(), model.getLastname(), model.getIdentityCardNumber(), model.getAddress(),
-                    model.getEmail(), model.getAccountList());
+        if (entity != null) {
+            dto = new ClientDTO(entity.getSsn(), entity.getFirstname(), entity.getLastname(), entity.getIdentityCardNumber(), entity.getAddress(),
+                    entity.getEmail(), AccountConverter.toDto(entity.getAccountList()));
         }
         return dto;
     }
 
-    public static List<ClientDTO> toDto(List<Client> models) {
+    public static List<ClientDTO> toDto(List<Client> entityList) {
         List<ClientDTO> clientDtos = new ArrayList<>();
-        if ((models != null) && (!models.isEmpty())) {
-            for (Client model : models) {
+        if ((entityList != null) && (!entityList.isEmpty())) {
+            for (Client model : entityList) {
                 clientDtos.add(toDto(model));
             }
         }

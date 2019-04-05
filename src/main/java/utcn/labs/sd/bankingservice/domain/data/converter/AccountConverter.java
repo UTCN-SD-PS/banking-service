@@ -13,18 +13,19 @@ public class AccountConverter {
     private AccountConverter() {
     }
 
-    public static AccountDTO toDto(Account model) {
+    public static AccountDTO toDto(Account entity) {
         AccountDTO dto = null;
-        if (model != null) {
-            dto = new AccountDTO(model.getAccountId(), model.getAccountType(), model.getCreationDate(), model.getBalance());
+        if (entity != null) {
+            dto = new AccountDTO(entity.getAccountId(), entity.getAccountType(), entity.getCreationDate(), entity.getBalance());
         }
         return dto;
     }
 
-    public static List<AccountDTO> toDto(List<Account> models) {
+
+    public static List<AccountDTO> toDto(List<Account> entityList) {
         List<AccountDTO> accountDtos = new ArrayList<>();
-        if ((models != null) && (!models.isEmpty())) {
-            for (Account model : models) {
+        if ((entityList != null) && (!entityList.isEmpty())) {
+            for (Account model : entityList) {
                 accountDtos.add(toDto(model));
             }
         }
