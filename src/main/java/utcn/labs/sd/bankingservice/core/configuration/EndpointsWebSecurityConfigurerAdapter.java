@@ -57,7 +57,8 @@ public class EndpointsWebSecurityConfigurerAdapter extends WebSecurityConfigurer
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .antMatchers("/bank/employee/**").hasRole(employeeRole)
-                .antMatchers("/bank/admin/**").hasRole(adminRole).anyRequest().permitAll()
+                .antMatchers("/bank/admin/**").hasRole(adminRole)
+                .antMatchers("/bank/login").hasAnyRole(adminRole, employeeRole).anyRequest().permitAll()
                 .and()
                 .httpBasic();
     }

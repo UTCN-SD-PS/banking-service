@@ -18,6 +18,9 @@ public final class SwaggerTags {
     public static final String EMPLOYEE_TAG = "Employee";
     public static final Tag EMPLOYEE = new Tag(EMPLOYEE_TAG, "Resource: Employee");
 
+    public static final String LOGIN_TAG = "Login";
+    public static final Tag LOGIN = new Tag(LOGIN_TAG, "Resource: Login");
+
     /**
      * Don't allow class instantiation
      */

@@ -18,7 +18,6 @@ import java.util.List;
 @CrossOrigin
 class EmployeeController {
 
-
     @ApiOperation(value = "getAllEmployees", tags = SwaggerTags.EMPLOYEE_TAG)
     @GetMapping
     public List<EmployeeDTO> getAllAccounts() {

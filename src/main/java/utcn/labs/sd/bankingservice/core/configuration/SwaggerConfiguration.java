@@ -29,7 +29,7 @@ public class SwaggerConfiguration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .produces(Sets.newHashSet(MediaType.APPLICATION_JSON_VALUE))
                 .useDefaultResponseMessages(false)
-                .tags(SwaggerTags.BANKING_SERVICE, SwaggerTags.ACCOUNT, SwaggerTags.CLIENT, SwaggerTags.EMPLOYEE)
+                .tags(SwaggerTags.BANKING_SERVICE, SwaggerTags.ACCOUNT, SwaggerTags.CLIENT, SwaggerTags.EMPLOYEE, SwaggerTags.LOGIN)
                 .forCodeGeneration(true)
                 .apiInfo(apiInfo())
                 .select().apis(RequestHandlerSelectors.basePackage("utcn.labs.sd")).build();
